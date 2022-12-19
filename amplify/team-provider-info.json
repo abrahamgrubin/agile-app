@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-agileapp1-dev-220723-authRole",
+      "UnauthRoleArn": "arn:aws:iam::710976282506:role/amplify-agileapp1-dev-220723-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::710976282506:role/amplify-agileapp1-dev-220723-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-agileapp1-dev-220723-deployment",
+      "UnauthRoleName": "amplify-agileapp1-dev-220723-unauthRole",
+      "StackName": "amplify-agileapp1-dev-220723",
+      "StackId": "arn:aws:cloudformation:us-east-1:710976282506:stack/amplify-agileapp1-dev-220723/842b6f60-7fe9-11ed-aad6-0e530a06c831",
+      "AmplifyAppId": "d36ulrx45x34tu"
+    }
+  }
+}
