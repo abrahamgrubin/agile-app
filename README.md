@@ -1,2 +1,3 @@
-# agile-app is this thing on?
-agile application
+# agile-app
+agile application with retro tool first
+
