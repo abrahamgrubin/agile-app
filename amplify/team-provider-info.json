@@ -10,6 +10,14 @@
       "StackName": "amplify-agileapp1-dev-220723",
       "StackId": "arn:aws:cloudformation:us-east-1:710976282506:stack/amplify-agileapp1-dev-220723/842b6f60-7fe9-11ed-aad6-0e530a06c831",
       "AmplifyAppId": "d36ulrx45x34tu"
+    },
+    "categories": {
+      "auth": {
+        "agileapp186c67cdf": {}
+      },
+      "api": {
+        "agileapp1": {}
+      }
     }
   }
 }
