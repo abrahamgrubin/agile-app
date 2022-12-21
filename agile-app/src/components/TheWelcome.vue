@@ -18,24 +18,29 @@
 
 <script>
   import { API } from 'aws-amplify';
-  import { createBlog, createPost } from '../graphql/mutations';
-  import { listBlogs, listPosts } from '../graphql/queries';
+  import { createBlog, createPost, createComment } from '../graphql/mutations';
+  import { listBlogs, listPosts, listComments } from '../graphql/queries';
 
   export default {
     name: 'app',
     async created() {
       this.getBlogs();
       this.getPosts();
+      this.getComments();
     },
     data() {
       return {
         name: '',
         posts: [],
-        blogs: []
+        blogs: [], 
+        comments: []
       };
     },
     methods: {
       async createPost(){
+        
+      },
+      async createComment(){
         
       },
       async createBlog() {
@@ -60,6 +65,12 @@
           query: listPosts
         });
         this.posts = posts.data.listPosts.items;
+      },
+      async getComments() {
+        const posts = await API.graphql({
+          query: listComments
+        });
+        this.posts = posts.data.listComments.items;
       }
     }
   };
