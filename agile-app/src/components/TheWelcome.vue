@@ -2,16 +2,15 @@
   <div id="app">
     <h1>Blog App</h1>
     <input type="text" v-model="name" placeholder="Blog name" />
-    <input type="text" v-model="posts" placeholder="Post" />
+    <h2>New Post</h2>
+    <input type="text" v-model="title" placeholder="Post Title"/>
+    <h2>New Comment</h2>
+    <input type="text" v-model="comment" placeholder="Post Comment" />
+    
     <button v-on:click="createBlog">Create Blog</button>
+    <button v-on:click="createPost">Create Post</button>
     <div v-for="item in blogs" :key="item.id">
-      <h3>{{ item.name }}</h3>
-    </div>
-    <input type="text" v-model="title" placeholder="Post Title" />
-    <input type="text" v-model="comments" placeholder="Post Comments"/> 
-    <div v-for="item in posts" :key="item.id">
-      <h2>{{ item.title }}</h2>
-      <h2>{{ item.comments }}</h2>
+      <RouterLink :to="{ name: 'blogs', params: { id: item.id } }"><h3>{{ item.name }}</h3></RouterLink>
     </div>
   </div>
 </template>
@@ -25,53 +24,41 @@
     name: 'app',
     async created() {
       this.getBlogs();
-      this.getPosts();
-      this.getComments();
     },
     data() {
       return {
         name: '',
-        posts: [],
-        blogs: [], 
-        comments: []
+        blogs: [],
+        blog: {},
+        posts: []
       };
     },
     methods: {
-      async createPost(){
-        
-      },
-      async createComment(){
-        
-      },
       async createBlog() {
-        const { name, posts } = this;
-        if (!name || !posts) return;
-        const blog = { name, posts };
+        const { name } = this;
+        if (!name) return;
+        const blog = { name };
         await API.graphql({
           query: createBlog,
           variables: { input: blog }
         });
-        this.name = '';
+      },
+      async createPost() {
+        const { title } = this;
+        const post = { title };
+        debugger;
+        await API.graphql({
+          query: createPost, 
+          variables: { input: post }
+        })
       },
       async getBlogs() {
         const blogs = await API.graphql({
           query: listBlogs
         });
         this.blogs = blogs.data.listBlogs.items;
-        console.log(blogs.data.listBlogs.items)
-      }, 
-      async getPosts() {
-        const posts = await API.graphql({
-          query: listPosts
-        });
-        this.posts = posts.data.listPosts.items;
       },
-      async getComments() {
-        const posts = await API.graphql({
-          query: listComments
-        });
-        this.posts = posts.data.listComments.items;
-      }
+      
     }
   };
 </script>
